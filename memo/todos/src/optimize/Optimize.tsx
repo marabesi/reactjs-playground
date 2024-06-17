@@ -8,7 +8,8 @@ export default function Optimize() {
   const [tab, setTab] = useState('all');
   const [isDark, setIsDark] = useState(false);
   return (
-    <div style={{ border: '1px solid red' }}>
+    <div>
+      <h1>optimize</h1>
       <button onClick={() => setTab('all')}>
         All
       </button>

@@ -8,7 +8,8 @@ export default function Fast() {
   const [tab, setTab] = useState('all');
   const [isDark, setIsDark] = useState(false);
   return (
-    <div style={{ border: '1px solid blue' }}>
+    <div>
+      <h1>fast</h1>
       <button onClick={() => setTab('all')}>
         All
       </button>
@@ -18,7 +19,7 @@ export default function Fast() {
       <button onClick={() => setTab('completed')}>
         Completed
       </button>
-      <br />
+      <br/>
       <label>
         <input
           type="checkbox"
@@ -27,7 +28,7 @@ export default function Fast() {
         />
         Dark mode
       </label>
-      <hr />
+      <hr/>
       <TodoList
         todos={todos}
         tab={tab}

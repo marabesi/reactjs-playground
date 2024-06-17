@@ -1,8 +1,15 @@
 import { filterTodos } from './utils-slow'
-import {memo} from "react";
+import {memo, useMemo} from "react";
 
 export default memo(function TodoList({ todos, theme, tab }: { todos: any[], theme: string, tab: string }) {
-  const visibleTodos = filterTodos(todos, tab);
+  // const visibleTodos = filterTodos(todos, tab);
+  const visibleTodos = useMemo(
+    () => {
+      console.log("optimized: i rerendered");
+      return filterTodos(todos, tab);
+    },
+    [todos, tab]
+  );
   return (
     <div className={theme}>
       <ul>

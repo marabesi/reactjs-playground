@@ -2,6 +2,7 @@ import { filterTodos } from './utils-slow'
 
 export default function TodoList({ todos, theme, tab }: { todos: any[], theme: string, tab: string }) {
   const visibleTodos = filterTodos(todos, tab);
+  console.log("slow: i rerendered");
   return (
     <div className={theme}>
       <ul>

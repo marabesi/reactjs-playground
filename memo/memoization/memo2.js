@@ -1,12 +1,17 @@
-const square = (n) => {
+const preValues = []
+function square(n) {
+  if (preValues[n] != null) {
+    return preValues[n]
+  }
   let result = 0;
-
-  // Slow function
   for (let i = 1; i <= n; i++) {
     for (let j = 1; j <= n; j++) {
       result += 1;
     }
   }
+
+  // Storing precomputing value
+  preValues[n] = result;
   return result;
 }
 

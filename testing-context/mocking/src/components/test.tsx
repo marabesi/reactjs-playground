@@ -1,10 +1,25 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import { Page } from './Page'
+import { useContext } from 'react'
 
-import App from './App'
+vi.mock('react', () => {
+  return {
+    ...vi.importActual('react'),
+    useContext: vi.fn(),
+    createContext: vi.fn()
+  }
+})
 
-describe('<App />', () => {
-  it('should render the App', () => {
-    const { container } = render(<App />)
-    expect(container.firstChild).toBeInTheDocument()
+describe('<Page />', () => {
+  it('should render light as default theme', () => {
+    vi.mocked(useContext).mockReturnValue('light')
+    render(<Page />)
+    expect(screen.getByText('current theme: light')).toBeInTheDocument()
+  })
+
+  it('should render dark theme', () => {
+    vi.mocked(useContext).mockReturnValue('dark')
+    render(<Page />)
+    expect(screen.getByText('current theme: dark')).toBeInTheDocument()
   })
 })

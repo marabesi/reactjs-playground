@@ -13,7 +13,7 @@ describe('<App />', () => {
     expect(screen.getByText('current theme: light')).toBeInTheDocument()
   })
 
-  it('should render dark theme', async () => {
+  it('should render dark theme on toggle', async () => {
     const user = userEvent.setup()
     render(<App />)
 

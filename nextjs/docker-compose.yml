@@ -1,0 +1,42 @@
+services:
+  nest-api:
+    image: node:20-alpine
+    container_name: nest-api
+    working_dir: /usr/src/app
+    volumes:
+      - ./crud-api:/usr/src/app:delegated
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3003
+    ports:
+      - "3003:3003"
+    command: sh -c "npm install && npm run start:dev"
+
+  nextjs-crud-persistence:
+    image: node:20-alpine
+    container_name: nextjs-crud-persistence
+    working_dir: /usr/src/app
+    volumes:
+      - ./nextjs-crud-persistence:/usr/src/app:delegated
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    ports:
+      - "3001:3000"
+    command: sh -c "npm install && npm run dev"
+
+  timers-and-rendering:
+    image: node:20-alpine
+    container_name: timers-and-rendering
+    working_dir: /usr/src/app
+    volumes:
+      - ./timers-and-rendering:/usr/src/app:delegated
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    ports:
+      - "3002:3000"
+    command: sh -c "npm install && npm run dev"
